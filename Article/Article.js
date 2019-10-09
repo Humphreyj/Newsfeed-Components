@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'I\'m the greatest!',
+    date: 'Everyday, Every Year',
+    firstParagraph: `I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest!`,
+
+    secondParagraph: `I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest!`,
+
+    thirdParagraph: `I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest! I\'m the greatest!`
   }
 ];
 
@@ -112,3 +121,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articles = document.querySelector('.articles');
+function articleMaker(title,date,p1,p2,p3) {
+  
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const par1 = document.createElement('p');
+  const par2 = document.createElement('p');  
+  const par3 = document.createElement('p');    
+  const expBtn = document.createElement('span');
+  
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  par1.textContent = p1;
+  par2.textContent = p2;
+  par3.textContent = p3;
+
+
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expBtn.classList.add('expandButton');
+  expBtn.style.width = '50px';
+  expBtn.style.height = '20px';
+  expBtn.style.backgroundColor = 'black';
+
+
+article.appendChild(articleTitle);
+article.appendChild(articleDate);
+article.appendChild(par1);
+article.appendChild(par2);
+article.appendChild(par3);
+article.appendChild(expBtn);
+
+
+expBtn.addEventListener('click', (e) => {
+  article.classList.toggle('article-open');
+})
+
+  console.log(article);
+  return article;
+  
+}
+
+data.forEach(data => {
+  articles.appendChild(articleMaker(data.title, data.date, data.firstParagraph,data.secondParagraph,data.thirdParagraph));
+})
