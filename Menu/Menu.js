@@ -50,7 +50,7 @@ function menuMaker(arr) {
   })
 
   menu.classList.add('menu');
-  
+  menu.appendChild(menuItems);
 
   menuButton.addEventListener('click', (e) => {
     menu.classList.toggle('menu--open');
@@ -60,5 +60,6 @@ function menuMaker(arr) {
   console.log(menu);
   return menu;
 }
-header.appendChild(menuMaker(menuItems));
+header.append(menuMaker(menuItems));
 
+menuMaker(menuItems);
