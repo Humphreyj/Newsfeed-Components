@@ -36,6 +36,7 @@ let menuItems = [
 const menuButton = document.querySelector('.menu-button');
 console.log(menuButton)
 const header = document.querySelector('.header');
+const content = document.querySelector('.content-container');
 
 
 
@@ -54,6 +55,13 @@ function menuMaker(arr) {
 
   menuButton.addEventListener('click', (e) => {
     menu.classList.toggle('menu--open');
+    // TweenMax.to(menu,.5, {left : 0, textShadow : '2 2 2 black'})
+  })
+
+  content.addEventListener('click', (e)=> {
+    if(menu.classList.contains('menu--open') ) {
+      menu.classList.remove('menu--open');
+    }
   })
   
 
